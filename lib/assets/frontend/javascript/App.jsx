@@ -4,11 +4,21 @@ class App extends React.Component {
     super(props);
     this.state = {
           salute: 'Hello (Virtual DOM) World !!!',
-          countries: [{name:'Argentina:', capital:'Buenos Aires'},
-                      {name:'Peru',       capital:'Lima'},
-                      {name:'Uruguay',    capital:'Montevideo'}]
+          users: []
          }
     this.handleClick = this.handleClick.bind(this); // linking the method scope
+   }
+
+   componentWillMount() {
+     fetch('//wber.dev/users.json').then((response) => {
+       return response.json();
+
+     }).then((response) => {
+       console.log(response);
+       this.setState({
+         users: response
+       })
+     });
    }
 
   handleClick(){
@@ -18,8 +28,8 @@ render() {
       return (
          <div>
            <h2>{this.state.salute}</h2>
-           { this.state.countries.map((object, i) => {
-              return <div key={i}> Country: <b>{object.name}</b> and capital: <b>{object.capital}</b> </div>
+           { this.state.users.map((object, i) => {
+              return <div key={i}> Country: <b>{object.name}</b> and capital: <b>{object.picture}</b> </div>
            })}
            <p id="onclick"><button onClick={this.handleClick}>Change title</button></p>
          </div>
