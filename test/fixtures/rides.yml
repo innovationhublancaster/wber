@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  requested_at: 
+  started: 
+  ended: 
+  start_lat: MyString
+  integer,: MyString
+  start_long: MyString
+  integer,: MyString
+  end_lat: MyString
+  integer,: MyString
+  end_long: MyString
+  integer,: MyString
+  walker_id: MyString
+  interger,: MyString
+  user_id: MyString
+  integer: MyString
+
+two:
+  requested_at: 
+  started: 
+  ended: 
+  start_lat: MyString
+  integer,: MyString
+  start_long: MyString
+  integer,: MyString
+  end_lat: MyString
+  integer,: MyString
+  end_long: MyString
+  integer,: MyString
+  walker_id: MyString
+  interger,: MyString
+  user_id: MyString
+  integer: MyString
