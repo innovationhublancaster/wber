@@ -7,6 +7,7 @@ class Map extends React.Component {
       map: null,
       loading: true
     };
+    this.buttonGo = this.buttonGo.bind(this);
   }
   componentDidMount(rootNode) {
     if (navigator && navigator.geolocation) {
@@ -24,7 +25,17 @@ class Map extends React.Component {
     }
   }
   buttonGo() {
-    alert('hello');
+    var currentLocation = this.state.currentLocation;
+    fetch('//wber.dev/rides', {
+      method: 'POST',
+      body: JSON.stringify({
+        start_lat: currentLocation.lat,
+        start_long: currentLocation.lng,
+        end_lat: '54.01031',
+        end_long: '-2.784648',
+        user_id: '1'
+      })
+    });
   }
   loadMap() {
     if(this.state.currentLocation) {

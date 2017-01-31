@@ -1,5 +1,5 @@
 class RidesController < ApplicationController
-  before_action :set_ride, only: [:show, :edit, :update, :destroy]
+  before_action :set_ride, only: %i(show edit update destroy)
 
   # GET /rides
   # GET /rides.json
@@ -54,7 +54,7 @@ class RidesController < ApplicationController
   # DELETE /rides/1
   # DELETE /rides/1.json
   def destroy
-    @ride.destroy
+    @ride.destroy!
     respond_to do |format|
       format.html { redirect_to rides_url, notice: 'Ride was successfully destroyed.' }
       format.json { head :no_content }
@@ -62,13 +62,14 @@ class RidesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ride
-      @ride = Ride.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def ride_params
-      params.fetch(:ride, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_ride
+    @ride = Ride.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def ride_params
+    params.fetch(:ride, {})
+  end
 end
